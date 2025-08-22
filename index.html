@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Beautiful Sicily ❤️</title>
+
+  <!-- Elegant font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Background */
+    body {
+      background: url('bg.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Overlay text */
+    .overlay {
+      position: relative;
+      z-index: 2;
+      background-color: rgba(0,0,0,0.4);
+      padding: 50px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      font-size: 60px;
+      color: #ffedf0;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    p {
+      font-size: 24px;
+      color: #ffe1e8;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Falling Roses */
+    .rose {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('rose.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.8;
+      animation-name: fall;
+      animation-timing-function: linear;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <h1>For My Beautiful Sicily ❤️</h1>
+    <p>You are my world, my love, my everything.</p>
+  </div>
+
+  <!-- Roses container -->
+  <div id="rose-container"></div>
+
+  <script>
+    // Falling Roses
+    const roseContainer = document.getElementById('rose-container');
+
+    function createRose() {
+      const rose = document.createElement('div');
+      rose.classList.add('rose');
+      rose.style.left = Math.random() * window.innerWidth + 'px';
+      rose.style.animationDuration = (4 + Math.random() * 3) + 's';
+      rose.style.transform = `scale(${0.5 + Math.random()})`;
+      roseContainer.appendChild(rose);
+
+      setTimeout(() => {
+        rose.remove();
+      }, 7000);
+    }
+
+    setInterval(createRose, 300);
+  </script>
+</body>
+</html>
